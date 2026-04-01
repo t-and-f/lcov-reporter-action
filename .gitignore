@@ -1,2 +1,13 @@
 node_modules/
 coverage/
+
+# Misc
+.DS_Store
+*.pem
+.idea
+
+# Build Outputs
+.next/
+out/
+build
+dist
