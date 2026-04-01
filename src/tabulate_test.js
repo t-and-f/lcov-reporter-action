@@ -1,5 +1,5 @@
-import { tabulate } from "./tabulate"
-import { th, tr, td, table, tbody, a, b, span, fragment } from "./html"
+import { tabulate } from "./tabulate.js"
+import { th, tr, td, table, tbody, a, b, span, fragment } from "./html.js"
 
 test("tabulate should generate a correct table", function() {
 	const data = [

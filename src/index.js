@@ -1,19 +1,19 @@
 import { promises as fs } from "fs"
 import core from "@actions/core"
-import { GitHub, context } from "@actions/github"
+import { getOctokit, context } from "@actions/github"
 import path from "path"
 
-import { parse } from "./lcov"
-import { diff } from "./comment"
-import { getChangedFiles } from "./get_changes"
-import { deleteOldComments } from "./delete_old_comments"
-import { normalisePath } from "./util"
+import { parse } from "./lcov.js"
+import { diff } from "./comment.js"
+import { getChangedFiles } from "./get_changes.js"
+import { deleteOldComments } from "./delete_old_comments.js"
+import { normalisePath } from "./util.js"
 
 const MAX_COMMENT_CHARS = 65536
 
 async function main() {
 	const token = core.getInput("github-token")
-	const githubClient = new GitHub(token)
+	const githubClient = getOctokit(token)
 	const workingDir = core.getInput('working-directory') || './';	
 	const lcovFile = path.join(workingDir, core.getInput("lcov-file") || "./coverage/lcov.info")
 	const baseFile = core.getInput("lcov-base")
@@ -68,14 +68,14 @@ async function main() {
 	}
 
 	if (context.eventName === "pull_request" || context.eventName === "pull_request_target") {
-		await githubClient.issues.createComment({
+		await githubClient.rest.issues.createComment({
 			repo: context.repo.repo,
 			owner: context.repo.owner,
 			issue_number: context.payload.pull_request.number,
 			body: body,
 		})
 	} else if (context.eventName === "push") {
-		await githubClient.repos.createCommitComment({
+		await githubClient.rest.repos.createCommitComment({
 			repo: context.repo.repo,
 			owner: context.repo.owner,
 			commit_sha: options.commit,

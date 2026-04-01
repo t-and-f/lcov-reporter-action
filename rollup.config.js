@@ -12,12 +12,12 @@ export default {
 	treeshake: true,
 	plugins: [
 		externals({
-			builtin: true,
+			builtins: true,
 			deps: false,
 		}),
 		resolve({
 			preferBuiltins: true,
-			mainFields: [ "main" ],
+			mainFields: ["main"],
 		}),
 		commonjs(),
 		json(),

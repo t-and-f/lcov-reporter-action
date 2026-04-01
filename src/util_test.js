@@ -1,4 +1,4 @@
-import { createHref } from "./util"
+import { createHref } from "./util.js"
 
 test('create simple url to file', () => {
   const options = {

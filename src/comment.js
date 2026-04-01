@@ -1,7 +1,7 @@
-import { details, summary, b, fragment, table, tbody, tr, th, h2 } from "./html"
+import { details, summary, b, fragment, table, tbody, tr, th, h2 } from "./html.js"
 
-import { percentage } from "./lcov"
-import { tabulate } from "./tabulate"
+import { percentage } from "./lcov.js"
+import { tabulate } from "./tabulate.js"
 
 export function comment(lcov, options) {
 	return fragment(

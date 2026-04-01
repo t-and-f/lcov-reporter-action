@@ -1,5 +1,5 @@
-import { th, tr, td, table, tbody, a, b, span, fragment } from "./html"
-import { createHref, normalisePath } from "./util"
+import { th, tr, td, table, tbody, a, b, span, fragment } from "./html.js"
+import { createHref, normalisePath } from "./util.js"
 
 // Tabulate the lcov data in a HTML table.
 export function tabulate(lcov, options) {
