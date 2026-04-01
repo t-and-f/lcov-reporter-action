@@ -10,4 +10,6 @@ coverage/
 .next/
 out/
 build
-dist
+
+# Track dist/main.cjs - required for GitHub Actions
+!dist/main.cjs
